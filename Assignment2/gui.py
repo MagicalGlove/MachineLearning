@@ -7,6 +7,9 @@ def predict():
     'color': color_entry.get(),
     'depth': depth_entry.get(),
     'table': table_entry.get(),
+    'carat': carat_entry.get(),
+    'cut': cut_entry.get(),
+    'clarity': clarity_entry.get(),
     'x': x_entry.get(),
     'y': y_entry.get(),
     'z': z_entry.get()
@@ -32,6 +35,9 @@ def create_entry_with_label(root, label_text):
     return entry
 
 # Create entry fields with labels
+carat_entry = create_entry_with_label(root, "Carat: ")
+cut_entry = create_entry_with_label(root, "Cut: ")
+clarity_entry = create_entry_with_label(root, "Clarity: ")
 color_entry = create_entry_with_label(root, "Color: ")
 depth_entry = create_entry_with_label(root, "Depth: ")
 table_entry = create_entry_with_label(root, "Table: ")
