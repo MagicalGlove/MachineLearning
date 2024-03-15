@@ -1,0 +1,10 @@
+We have created a simple gui where you can input the values required for the model and which might impact the price of the diamond.
+One of the use cases of this model could be for ordinary people, coming in possesion of a diamond, to avoid having to go get a proffesional evaluation of the diamonds price.
+Because of this you can leave some of the more tricky values such as 'cut' or 'clarity' empty and they will simply be set to median values, while simpler values such as the diamonds dimensions, depth and table are required. The more information provided the better of course.
+
+Quick guide for running the gui:
+
+1. In the 'Assignment 2.1.ipynb file, run all cells (Or atleast up until Knn (classification))
+2. Run the app.py file. If the server is running on a different port than 5000, you need to change it accordingly in line 5 of the gui.py file.
+3. Run the gui.py file in a separate terminal.
+4. Input the values and click predict, the predicted price will be displayed below.

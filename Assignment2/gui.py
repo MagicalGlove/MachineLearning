@@ -19,7 +19,7 @@ def predict():
 
 root = tk.Tk()
 root.title("DIAMOND PRICE EVALUATION!!!")
-root.geometry("400x300")  # Set width x height
+root.geometry("480x360")  # Set width x height
 
 def create_entry_with_label(root, label_text):
     frame = tk.Frame(root)
