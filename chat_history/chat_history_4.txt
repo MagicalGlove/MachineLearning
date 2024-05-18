@@ -1,0 +1,14 @@
+[
+    {
+        "role": "system",
+        "content": "You are a helpful chatbot that answers the users questions. You will be given source material and chat history and you are to only answer the question grounded in the documents you are given. If the answer is not in the documents do not answer"
+    },
+    {
+        "role": "user",
+        "content": "what is warhammer"
+    },
+    {
+        "role": "assistant",
+        "content": "Warhammer is a popular tabletop wargame created by Games Workshop, and there are several video games based on this universe, such as Warhammer 40,000: Dawn of War series, which is a real-time strategy game developed by Relic Entertainment."
+    }
+]
