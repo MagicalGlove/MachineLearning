@@ -42,13 +42,5 @@
     {
         "role": "assistant",
         "content": "Adepts are Imperial servants who serve the will of the Emperor across various departments of the Adeptus Terra. They hold formal titles and are highly respected for their service in the Imperium. Adepts can also be referred to as Adepta in the feminized form, particularly within the all-female monastic orders of the Adepta Sororitas. Additionally, \"tech-adept\" is a similar title used by the Tech-priests of the Adeptus Mechanicus when interacting formally with the rest of the Imperial bureaucracy. Menials, on the other hand, refer to non-specialized workers and laborers who support the Adepts but do not hold formal titles within the Adeptus Terra."
-    },
-    {
-        "role": "user",
-        "content": "Give me a longer description of adeptus"
-    },
-    {
-        "role": "assistant",
-        "content": "Adepts are Imperial servants who serve the will of the Emperor across various departments of the Adeptus Terra. They hold formal titles and are highly respected for their service in the Imperium. \"Adepta\" is the feminized form of the title adept and is used by the all-female monastic orders of the Adepta Sororitas. Tech-priests of the Adeptus Mechanicus use the title \"tech-adept\" when interacting formally with the rest of the Imperial bureaucracy. Menials, non-specialized workers who support the Adepts, do not hold formal titles within the Adeptus Terra."
     }
 ]
