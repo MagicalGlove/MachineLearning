@@ -1,54 +1,70 @@
-from transformers import AutoModelForCausalLM, AutoTokenizer, TextStreamer
-from transformers import pipeline
-import torch
+import os
+import json
+from openai import OpenAI
+from dotenv import load_dotenv
 
-model_id = "MaziyarPanahi/Llama-3-70B-Instruct-DPO-v0.4"
+dotenv_path = os.path.join(os.path.dirname(__file__), 'config.env')
+load_dotenv(dotenv_path,verbose=True)
 
-model = AutoModelForCausalLM.from_pretrained(
-    model_id,
-    torch_dtype=torch.bfloat16,
-    device_map="auto",
-    trust_remote_code=True,
-)
+client = OpenAI(api_key=os.environ.get("OPENAI_KEY"))
 
-tokenizer = AutoTokenizer.from_pretrained(
-    model_id,
-    trust_remote_code=True
-)
+def read_or_create_chat_history(directory):
+   
+    if not os.path.exists(directory):
+        os.makedirs(directory)  
 
-streamer = TextStreamer(tokenizer)
+    files = os.listdir(directory)
+    
+    if not files:
+        with open(os.path.join(directory, 'chat_history_0.txt'), 'w') as file:
+            file.write('''[
+{
+    "role": "system",
+    "content": "You are a helpful chatbot that answers the users questions. You will be given source material and chat history and you are to only answer the question grounded in the documents you are given. If the answer is not in the documents do not answer"
+}
+]''')
+        files = os.listdir(directory)
+    
+    files.sort()
 
-pipeline = pipeline(
-    "text-generation",
-    model=model,
-    tokenizer=tokenizer,
-    model_kwargs={"torch_dtype": torch.bfloat16},
-    streamer=streamer
-)
+    file_contents = []
+    
+    for file_name in files:
+        with open(os.path.join(directory, file_name), 'r') as file:
+            contents = json.load(file)
+            file_contents.append(contents)
+                
+    return file_contents
 
-messages = [
-    {"role": "system", "content": "You are a pirate chatbot who always responds in pirate speak!"},
-    {"role": "user", "content": "Who are you?"},
-]
+def write_to_file(directory, number, new_entry):
+    file_path = os.path.join(directory, f"chat_history_{number}.txt")
+    
+    if os.path.exists(file_path):
+        with open(file_path, 'r') as file:
+            try:
+                data = json.load(file)
+            except json.JSONDecodeError:
+                data = []
+    else:
+        data = []
+    
+    data.append(new_entry)
+    
+    with open(file_path, 'w') as file:
+        json.dump(data, file, indent=4)
 
-prompt = tokenizer.apply_chat_template(
-    messages,
-    tokenize=False,
-    add_generation_prompt=True
-)
+def create_new_chat(directory, number):
+    with open(os.path.join(directory, f'chat_history_{number}.txt'), 'w') as file:
+        file.write('''[
+{
+    "role": "system",
+    "content": "You are a helpful chatbot that answers the users questions. You will be given source material and chat history and you are to only answer the question grounded in the documents you are given. If the answer is not in the documents do not answer"
+}
+]''')
 
-terminators = [
-    tokenizer.eos_token_id,
-    tokenizer.convert_tokens_to_ids("<|im_end|>"),
-    tokenizer.convert_tokens_to_ids("<|eot_id|>")
-]
-
-outputs = pipeline(
-    prompt,
-    max_new_tokens=2048,
-    eos_token_id=terminators,
-    do_sample=True,
-    temperature=0.6,
-    top_p=0.95,
-)
-print(outputs[0]["generated_text"][len(prompt):])
+def generate_response(conversation):
+    response = client.chat.completions.create(
+        model="gpt-3.5-turbo",
+        messages=conversation,
+    )
+    return response.choices[0].message.content
