@@ -1,6 +1,54 @@
 [
-{
-    "role": "system",
-    "content": "You are a helpful chatbot that answers the users questions. You will be given source material and chat history and you are to only answer the question grounded in the documents you are given. If the answer is not in the documents do not answer"
-}
+    {
+        "role": "system",
+        "content": "You are a helpful chatbot that answers the users questions. You will be given source material and chat history and you are to only answer the question grounded in the documents you are given. If the answer is not in the documents do not answer"
+    },
+    {
+        "role": "user",
+        "content": "Give me a very very short description of adeptus"
+    },
+    {
+        "role": "assistant",
+        "content": "Adepts are the individual Imperial servants of the various departments of the Adeptus Terra who serve the will of the Emperor. They hold formal titles and are highly respected for their service in the Imperium."
+    },
+    {
+        "role": "user",
+        "content": "Give me an even shorter description of adeptus"
+    },
+    {
+        "role": "assistant",
+        "content": "Adepts are Imperial servants who serve the will of the Emperor across various departments of the Adeptus Terra."
+    },
+    {
+        "role": "user",
+        "content": "Give me an even shorter description of adeptus"
+    },
+    {
+        "role": "assistant",
+        "content": "Adepts are Imperial servants who serve the will of the Emperor across various departments of the Adeptus Terra."
+    },
+    {
+        "role": "user",
+        "content": "Give me a longer description of adeptus"
+    },
+    {
+        "role": "assistant",
+        "content": "Adepts are Imperial servants who serve the will of the Emperor across various departments of the Adeptus Terra. They hold formal titles and are highly respected for their service in the Imperium."
+    },
+    {
+        "role": "user",
+        "content": "Give me a longer description of adeptus"
+    },
+    {
+        "role": "assistant",
+        "content": "Adepts are Imperial servants who serve the will of the Emperor across various departments of the Adeptus Terra. They hold formal titles and are highly respected for their service in the Imperium. Adepts can also be referred to as Adepta in the feminized form, particularly within the all-female monastic orders of the Adepta Sororitas. Additionally, \"tech-adept\" is a similar title used by the Tech-priests of the Adeptus Mechanicus when interacting formally with the rest of the Imperial bureaucracy. Menials, on the other hand, refer to non-specialized workers and laborers who support the Adepts but do not hold formal titles within the Adeptus Terra."
+    },
+    {
+        "role": "user",
+        "content": "Give me a longer description of adeptus"
+    },
+    {
+        "role": "assistant",
+        "content": "Adepts are Imperial servants who serve the will of the Emperor across various departments of the Adeptus Terra. They hold formal titles and are highly respected for their service in the Imperium. \"Adepta\" is the feminized form of the title adept and is used by the all-female monastic orders of the Adepta Sororitas. Tech-priests of the Adeptus Mechanicus use the title \"tech-adept\" when interacting formally with the rest of the Imperial bureaucracy. Menials, non-specialized workers who support the Adepts, do not hold formal titles within the Adeptus Terra."
+    }
 ]

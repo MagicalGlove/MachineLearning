@@ -1,7 +1,6 @@
 from flask import Flask, jsonify, request
 from Model import vector_search
-from llm import generate_response, write_to_file
-import json
+from llm import generate_response
 
 app = Flask(__name__)
 
@@ -23,10 +22,7 @@ def predict():
 
     conversation.append(new_source_material)
 
-    write_to_file("chat_history", chat_history_no, new_source_material)
-
     llm_response = generate_response(conversation)
-    print(llm_response)
     
 
     return jsonify(llm_response)

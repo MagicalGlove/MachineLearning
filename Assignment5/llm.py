@@ -20,7 +20,7 @@ def read_or_create_chat_history(directory):
             file.write('''[
 {
     "role": "system",
-    "content": "You are a helpful chatbot that answers the users questions. You will be given source material and chat history and you are to only answer the question grounded in the documents you are given. If the answer is not in the documents do not answer"
+    "content": "You are a helpful chatbot that answers the users questions. You will be given source material and chat history and you are to only answer the last user question given, grounded in the documents you are given. If the answer is not in the documents do not answer"
 }
 ]''')
         files = os.listdir(directory)
@@ -63,8 +63,10 @@ def create_new_chat(directory, number):
 ]''')
 
 def generate_response(conversation):
+    print(conversation)
     response = client.chat.completions.create(
         model="gpt-3.5-turbo",
         messages=conversation,
+        max_tokens=150
     )
     return response.choices[0].message.content
